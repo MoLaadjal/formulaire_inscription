@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Registration Form</title>
+</head>
+<body>
+    <div class="container">
+        <form id="form" class="form">
+        <h2>Registration Form</h2>
+        <div class="form-control">
+            <label for="last-name">Last Name *</label><br>
+            <input type="text" id="last-name" required><br>
+            <small>Error message</small>
+        </div>    
+        <div class="form-control">
+            <label for="first-name">First Name *</label><br>
+            <input type="text" id="first-name" required><br>
+            <small>Error message</small>
+        </div>    
+        <div class="form-control">
+            <label for="telephone">Phone *</label><br>
+            <input type="tel" id="telephone" required><br>
+            <small>Error message</small>
+        </div>    
+        <div class="form-control">
+            <label for="email">Email *</label><br>
+            <input type="text" id="email" required><br>
+            <small>Error message</small>
+        </div>    
+        <div class="form-control">
+            <label for="date-of-birth">Date of Birth *</label><br>
+            <input type="text" id="date-of-birth" pattern="\d{1,2}/\d{1,2}/\d{4}" placeholder="DD/MM/YYYY" required><br>    
+            <small>Error message</small>
+        </div>    
+        <div class="form-control">
+            <label for="password">Password *</label><br>
+            <input type="password" id="password" required><br>    
+            <small>Error message</small>
+        </div>    
+        <div class="form-control">
+            <label for="password2">Confirm Password *</label><br>
+            <input type="password" id="password2" required><br>    
+            <small>Error message</small>
+        </div>
+        <div class="form-control">
+            <label>Where did you hear about us?</label><br>
+            <input type="radio" id="friend_or_colleague" name="source" value="friend_or_colleague">
+            <label for="friend_or_colleague">A friend or colleague</label><br>
+            <input type="radio" id="google" name="source" value="google">
+            <label for="google">Google</label><br>
+            <input type="radio" id="news_article" name="source" value="news_article">
+            <label for="news_article">News Article</label><br>
+            <input type="radio" id="blog_article" name="source" value="blog_article">
+            <label for="blog_article">Blog Article</label><br>
+            <input type="radio" id="other" name="source" value="other">
+            <label for="other">Other</label><br>
+        </div>
+        
+        <div class="form-control">
+            <input type="checkbox" id="privacy-policy" required>
+            <label for="privacy-policy">I have read, understood, and accepted the PRIVACY POLICY for membership.</label><br>
+        </div>    
+        <button type="submit">Submit</button>    
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>    
+</body>
+</html>
