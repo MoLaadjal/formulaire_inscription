@@ -115,11 +115,12 @@ form.addEventListener('submit', function(e) {
 
     if (checkPasswordsMatch(password, password2)) {
         const user = {
-            username: username.value.trim(),
-            telephone: telephone.value.trim(),
-            email: email.value.trim(),
-            date: date.value.trim(),
-            privacy_policy: privacy_policy.checked
+            username: document.getElementById('username').value.trim(),
+            mood: parseFloat(document.getElementById('mood').value),
+            telephone: document.getElementById('telephone').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            date: document.getElementById('date').value.trim(),
+            privacy_policy: document.getElementById('privacy policy').checked
         };
         localStorage.setItem("user", JSON.stringify(user));
     }
