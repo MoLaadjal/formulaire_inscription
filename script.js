@@ -1,5 +1,5 @@
 const form = document.getElementById('form');
-const fields = ['username', 'telephone', 'email', 'date', 'password', 'password2', 'privacy_policy'];
+const fields = ['username', 'telephone', 'email', 'date', 'password', 'password2', 'privacy policy'];
 
 // Fonction pour afficher un message d'erreur
 function showError(input, message) {
@@ -18,7 +18,7 @@ function showSuccess(input) {
 // Fonction pour valider un champ
 function validateField(input) {
     const fieldName = input.id.charAt(0).toUpperCase() + input.id.slice(1);
-    if (input.type === 'email') {
+    if (input.type === 'text') {
         if (!input.value.trim()) {
             showError(input, `${fieldName} is required`);
         } else if (!checkEmail(input.value)) {
@@ -99,3 +99,4 @@ form.addEventListener('submit', function(e) {
         localStorage.setItem("user", JSON.stringify(user));
     }
 });
+
