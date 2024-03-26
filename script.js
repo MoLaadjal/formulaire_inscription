@@ -1,5 +1,5 @@
 const form = document.getElementById('form');
-const fields = ['username', 'mood', 'telephone', 'email', 'date', 'password', 'password2', 'privacy_policy'];
+const fields = ['username', 'mood', 'telephone', 'email', 'date', 'password', 'password2', 'privacy policy'];
 
 // Fonction pour afficher un message d'erreur
 function showError(input, message) {
