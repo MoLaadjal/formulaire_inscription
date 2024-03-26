@@ -25,7 +25,7 @@ body {
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    padding: 20px; 
+    padding: 10px; 
 }
 
 h2 {
@@ -34,7 +34,7 @@ h2 {
 }
 
 .form {
-    padding: 30px 40px;
+    padding: 15px 20px;
 }
 
 .form-control {
@@ -50,9 +50,9 @@ h2 {
 }
 
 .form-control input[type="text"],
-.form-control input[type="date"],
-.form-control input[type="email"],
 .form-control input[type="number"],
+.form-control input[type="tel"],
+.form-control input[type="date"],
 .form-control input[type="password"] {
     border: 2px solid #f0f0f0;
     border-radius: 4px;
@@ -108,5 +108,3 @@ h2 {
     margin-top: 20px;
     width: 100%;
 }
-
-
