@@ -1,5 +1,5 @@
 const form = document.getElementById('form');
-const fields = ['username', 'telephone', 'email', 'date', 'password', 'password2', 'privacy policy'];
+const fields = ['username', 'mood', 'telephone', 'email', 'date', 'password', 'password2', 'privacy_policy'];
 
 // Fonction pour afficher un message d'erreur
 function showError(input, message) {
@@ -33,6 +33,17 @@ function validateField(input) {
             showError(input, 'Please enter a valid phone number');
         } else {
             showSuccess(input);
+        }
+    } else if (input.type === 'number') {
+        if (!input.value.trim()) {
+            showError(input, `${fieldName} is required`);
+        } else {
+            const value = parseFloat(input.value);
+            if (value < 1 || value > 10 || isNaN(value)) {
+                showError(input, `${fieldName} must be between 1 and 10`);
+            } else {
+                showSuccess(input);
+            }
         }
     } else if (input.type === 'checkbox') {
         if (!input.checked) {
