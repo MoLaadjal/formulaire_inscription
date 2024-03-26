@@ -89,3 +89,7 @@ form.addEventListener('submit', function(e) {
     checkLength(password, 6, 25);
     checkPasswordsMatch(password, password2);
 });
+
+ 
+
+
