@@ -26,6 +26,14 @@ function validateField(input) {
         } else {
             showSuccess(input);
         }
+    } else if (input.type === 'tel') {
+        if (!input.value.trim()) {
+            showError(input, `${fieldName} is required`);
+        } else if (!validateTelephone(input.value.trim())) {
+            showError(input, 'Please enter a valid phone number');
+        } else {
+            showSuccess(input);
+        }
     } else if (input.type === 'checkbox') {
         if (!input.checked) {
             showError(input, `${fieldName} acceptance is required`);
@@ -71,6 +79,12 @@ function checkEmail(email) {
     return re.test(email);
 }
 
+// Fonction pour vérifier la validité du numéro de téléphone
+function validateTelephone(telephone) {
+    const re = /^\+?[0-9\s()-]{3,}$/;
+    return re.test(telephone);
+}
+
 // Fonction pour vérifier la concordance des mots de passe
 function checkPasswordsMatch(password, password2) {
     if (password.value !== password2.value) {
@@ -99,4 +113,3 @@ form.addEventListener('submit', function(e) {
         localStorage.setItem("user", JSON.stringify(user));
     }
 });
-
