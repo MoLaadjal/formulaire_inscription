@@ -15,31 +15,28 @@ function showSuccess(input) {
     formControl.className = 'form-control success';    
 }
 
-// Fonction pour vérifier si un email est valide
-function checkEmail(input) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(input.value.trim());
-}
-
 // Fonction pour valider un champ
 function validateField(input) {
+    const fieldName = input.id.charAt(0).toUpperCase() + input.id.slice(1);
     if (input.type === 'email') {
-        if (input.value === '') {
-            showError(input, 'Email is required');
-        } else if (!checkEmail(input)) {
+        if (!input.value.trim()) {
+            showError(input, `${fieldName} is required`);
+        } else if (!checkEmail(input.value)) {
             showError(input, 'Email is not valid');
         } else {
             showSuccess(input);
         }
     } else if (input.type === 'checkbox') {
         if (!input.checked) {
-            showError(input, 'Privacy policy acceptance is required');
+            showError(input, `${fieldName} acceptance is required`);
         } else {
             showSuccess(input);
         }
+    } else if (input.id === 'password' || input.id === 'password2') {
+        checkLength(input, 6, 25);
     } else {
-        if (input.value === '') {
-            showError(input, `${input.id.charAt(0).toUpperCase() + input.id.slice(1)} is required`);
+        if (!input.value.trim()) {
+            showError(input, `${fieldName} is required`);
         } else {
             showSuccess(input);
         }
@@ -52,32 +49,35 @@ function validateForm() {
         const input = document.getElementById(field);
         validateField(input);
     });
-
-// Vérification de la validité de l'email avec le regex
-    const emailInput = document.getElementById('email');
-    if (emailInput.value !== '' && !checkEmail(emailInput)) {
-        showError(emailInput, 'Email is not valid');
-    }
 }
 
 // Fonction pour vérifier la longueur d'un champ
 function checkLength(input, min, max) {
-    if (input.value === '') {
-        showError(input, `${input.id.charAt(0).toUpperCase() + input.id.slice(1)} is required`);
+    const fieldName = input.id.charAt(0).toUpperCase() + input.id.slice(1);
+    if (!input.value.trim()) {
+        showError(input, `${fieldName} is required`);
     } else if (input.value.length < min) {
-        showError(input, `${input.id.charAt(0).toUpperCase() + input.id.slice(1)} must be at least ${min} characters`);
+        showError(input, `${fieldName} must be at least ${min} characters`);
     } else if (input.value.length > max) {
-        showError(input, `${input.id.charAt(0).toUpperCase() + input.id.slice(1)} must be less than ${max} characters`);
+        showError(input, `${fieldName} must be less than ${max} characters`);
     } else {
         showSuccess(input);
     }      
 }
 
-// Fonction pour vérifier la concordance des deux mots de passe
-function checkPasswordsMatch(input1, input2) {
-    if(input1.value !== input2.value) {
-        showError(input2, 'Passwords do not match')
+// Fonction pour vérifier la validité de l'email
+function checkEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+// Fonction pour vérifier la concordance des mots de passe
+function checkPasswordsMatch(password, password2) {
+    if (password.value !== password2.value) {
+        showError(password2, 'Passwords do not match');
+        return false;
     }
+    return true;
 }
 
 // Événement de soumission du formulaire
@@ -86,10 +86,16 @@ form.addEventListener('submit', function(e) {
     validateForm();
 
     checkLength(username, 3, 15);
-    checkLength(password, 6, 25);
     checkPasswordsMatch(password, password2);
+
+    if (checkPasswordsMatch(password, password2)) {
+        const user = {
+            username: username.value.trim(),
+            telephone: telephone.value.trim(),
+            email: email.value.trim(),
+            date: date.value.trim(),
+            privacy_policy: privacy_policy.checked
+        };
+        localStorage.setItem("user", JSON.stringify(user));
+    }
 });
-
- 
-
-
