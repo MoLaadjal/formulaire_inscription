@@ -17,9 +17,10 @@
             </div>       
             <div class="form-control">
                 <label for="telephone">Phone *</label>
-                <input type="number" id="telephone">
+                <input type="tel" id="telephone" pattern="^\+?[0-9\s()-]{3,}$" title="Please enter a valid phone number">
                 <small>Error message</small>
-            </div>    
+            </div>
+              
             <div class="form-control">
                 <label for="email">Email *</label>
                 <input type="text" id="email">
@@ -51,7 +52,7 @@
                 </select>
             </div>
             <div class="form-control checkbox-control">
-                <input type="checkbox" id="privacy_policy">
+                <input type="checkbox" id="privacy policy">
                 <small>Error message</small>
                 <label for="privacy_policy">I have read, understood, and accepted the PRIVACY POLICY for membership.</label>
             </div> 
