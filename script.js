@@ -2,7 +2,7 @@ const form = document.getElementById('form');
 const username = document.getElementById('username');
 const telephone = document.getElementById('telephone');
 const email = document.getElementById('email');
-const date = document.getElementById('date-of-birth')
+const date = document.getElementById('date of birth')
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
 const privacy_policy = document.getElementById('privacy_policy');
@@ -27,49 +27,27 @@ function checkEmail(input) {
     return re.test(input.value.trim());
 }
 
+// Check required fields
+function checkRequired(inputArr) {
+    inputArr.forEach(function(input) {
+        if(input.value.trim() === '') {
+            showError(input, `${getFieldName(input)} is required`);
+        } else {
+            showSuccess(input)
+        }
+    });
+}
+
+// Get fieldname
+function getFieldName(input) {
+    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
 
 // Even listeners
 form.addEventListener('submit', function(e) {
     e.preventDefault();
     
-    if (username.value === '') {
-        showError(username, 'Username is required');
-    } else {
-        showSuccess(username);
-    }
-
-    if (telephone.value === '') {
-        showError(telephone, 'Phone number is required');
-    } else {
-        showSuccess(telephone);
-    }
-
-
-    if (email.value === '') {
-        showError(email, 'Email is required');
-    } else if (!checkEmail(email)) {
-        showError(email, 'Email is not valid');
-    } else {
-        showSuccess(email);
-    }
-
-    if (password.value === '') {
-        showError(password, 'Password is required');
-    } else {
-        showSuccess(password);
-    }
-
-    if (password2.value === '') {
-        showError(password2, 'Password 2 is required');
-    } else {
-        showSuccess(password2);
-    }
-
-    if (!privacy_policy.checked) {
-        showError(privacy_policy, 'Privacy policy acceptance is required');
-    } else {
-        showSuccess(privacy_policy);
-    }
+    checkRequired([username, telephone, email, date, password, password2, privacy_policy]);    
 });
 
 
